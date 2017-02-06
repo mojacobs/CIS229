@@ -6,38 +6,41 @@
 
 <h2>Looking for specific criteria? Search Rides now!</h2>
 
-@using (Html.BeginForm("Search", "Search", FormMethod.Get))
-{
-    @Html.AntiForgeryToken()
+@*
+    @using (Html.BeginForm("Search", "Ride", FormMethod.Get))
+    {
+        @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>Select a campus and day of the week</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-horizontal">
+            <h4>Select a campus and day of the week</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CampusId, "CampusId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("CampusId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.CampusId, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.CampusId, "CampusId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("CampusId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CampusId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DayOfWeek, "DayOfWeek", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("DayOfWeek", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.DayOfWeek, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Search" class="btn btn-default" />
+                </div>
             </div>
         </div>
+    }
+*@
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.DayOfWeek, "DayOfWeek", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("DayOfWeek", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.DayOfWeek, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Search" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>

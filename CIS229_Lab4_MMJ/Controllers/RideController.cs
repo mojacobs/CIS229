@@ -21,6 +21,15 @@ namespace CIS229_Lab4_MMJ.Controllers
             return View(rides.ToList());
         }
 
+        // // Ride/Search
+        // public ActionResult Search(Campus campus, string dayOfWeek)
+        // {
+        //     var rides = db.Rides.
+        //                   .Include("Ride")
+        //                   .Where(r => r.Campus.Contains(campus) && r => r.DayOfWeek.Contains(dayOfWeek))
+        //                 
+        // }
+
         // GET: Ride/Details/5
         public ActionResult Details(int? id)
         {
