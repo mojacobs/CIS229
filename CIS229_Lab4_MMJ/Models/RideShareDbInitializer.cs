@@ -7,8 +7,7 @@ using System.Web;
 
 namespace CIS229_Lab4_MMJ.Models
 {
-    public class RideShareDbInitializer
-       : System.Data.Entity.DropCreateDatabaseIfModelChanges<RideShareDB>
+    public class RideShareDbInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<RideShareDB>
     {
         protected override void Seed(RideShareDB context)
         {

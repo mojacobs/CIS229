@@ -7,14 +7,14 @@ namespace CIS229_Lab4_MMJ.Models
 {
     public class Ride
     {
-        public int RideId { get; set; }
-        public int CampusId { get; set; }
-        public string StudentEmail { get; set; }
-        public string StartingCrossroads { get; set; }
-        public string StartingTown { get; set; }
-        public string DayOfWeek { get; set; }
-        public TimeSpan TimeStart { get; set; }
-        public TimeSpan TimeEnd { get; set; }
+        public virtual int RideId { get; set; }
+        public virtual int CampusId { get; set; }
+        public virtual string StudentEmail { get; set; }
+        public virtual string StartingCrossroads { get; set; }
+        public virtual string StartingTown { get; set; }
+        public virtual string DayOfWeek { get; set; }
+        public virtual TimeSpan TimeStart { get; set; }
+        public virtual TimeSpan TimeEnd { get; set; }
         public virtual Campus Campus { get; set; }
     }
 }

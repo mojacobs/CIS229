@@ -7,9 +7,9 @@ namespace CIS229_Lab4_MMJ.Models
 {
     public class Campus
     {
-        public int CampusId { get; set; }
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public string City { get; set; }
+        public virtual int CampusId { get; set; }
+        public virtual string Name { get; set; }
+        public virtual string Address { get; set; }
+        public virtual string City { get; set; }
     }
 }
