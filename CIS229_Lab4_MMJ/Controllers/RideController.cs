@@ -21,7 +21,7 @@ namespace CIS229_Lab4_MMJ.Controllers
             {
                  Rides      = db.Rides.Include(r => r.Campus)
                 ,Campuses   = db.Campus.Select(c => new SelectListItem { Value = c.CampusId.ToString(), Text = c.Name })
-                //,DaysOfWeek = new SelectListItem { }.ToString
+                //,DaysOfWeek = new SelectListItem { }
             };
           
             return View(model);
