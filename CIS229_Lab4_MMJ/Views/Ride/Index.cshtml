@@ -1,4 +1,5 @@
-﻿@model IEnumerable<CIS229_Lab4_MMJ.Models.Ride>
+﻿@using CIS229_Lab4_MMJ.Models;
+@model RideIndexModel
 
 @{
     ViewBag.Title = "Index";
@@ -7,39 +8,39 @@
 <h2>Looking for specific criteria? Search Rides now!</h2>
 
 
-    @using (Html.BeginForm("Search", "Ride", FormMethod.Get))
-    {
-        @Html.AntiForgeryToken()
+@using (Html.BeginForm("Search", "Ride", FormMethod.Get))
+{
+    @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
-            <h4>Select a campus and day of the week</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-horizontal">
+        <h4>Select a campus and day of the week</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.CampusId, "CampusId", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("CampusId", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.CampusId, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.DayOfWeek, "DayOfWeek", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("DayOfWeek", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.DayOfWeek, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Search" class="btn btn-default" />
-                </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.SelectedCampusId, "CampusId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.SelectedCampusId, Model.Campuses, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SelectedCampusId, "", new { @class = "text-danger" })
             </div>
         </div>
-    }
 
+     @*<div class="form-group">
+            @Html.LabelFor(model => model.DaysOfWeek, "DayOfWeek", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(d => d.SelectedDayOfWeek, Model.DaysOfWeek, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DaysOfWeek, "", new { @class = "text-danger" })
+            </div>
+       </div>
+     *@
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Search" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -47,58 +48,59 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Campus.Name)
+            @Html.DisplayNameFor(model => model.Rides.First().Campus.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.StudentEmail)
+            @Html.DisplayNameFor(model => model.Rides.First().StudentEmail)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.StartingCrossroads)
+            @Html.DisplayNameFor(model => model.Rides.First().StartingCrossroads)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.StartingTown)
+            @Html.DisplayNameFor(model => model.Rides.First().StartingTown)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DayOfWeek)
+            @Html.DisplayNameFor(model => model.Rides.First().DayOfWeek)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TimeStart)
+            @Html.DisplayNameFor(model => model.Rides.First().TimeStart)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TimeEnd)
+            @Html.DisplayNameFor(model => model.Rides.First().TimeEnd)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Campus.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StudentEmail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartingCrossroads)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartingTown)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DayOfWeek)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TimeStart)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TimeEnd)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.RideId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.RideId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.RideId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model.Rides)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Campus.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartingCrossroads)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartingTown)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DayOfWeek)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeStart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeEnd)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.RideId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.RideId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.RideId })
+            </td>
+        </tr>
+    }
 
 </table>

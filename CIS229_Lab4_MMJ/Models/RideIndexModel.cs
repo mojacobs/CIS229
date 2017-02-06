@@ -10,5 +10,9 @@ namespace CIS229_Lab4_MMJ.Models
         public IEnumerable<SelectListItem> Campuses { get; set; }
 
         public int SelectedCampusId { get; set; }
+
+        public IEnumerable<SelectListItem> DaysOfWeek { get; set; }
+
+        public int SelectedDayOfWeek { get; set; }
     }
 }

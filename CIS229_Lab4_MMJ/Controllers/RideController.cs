@@ -19,19 +19,20 @@ namespace CIS229_Lab4_MMJ.Controllers
         {
             var model = new RideIndexModel
             {
-                 Rides    = db.Rides.Include(r => r.Campus)
-                ,Campuses = db.Campus.Select(c => new SelectListItem { Value = c.CampusId.ToString(), Text = c.Name })
+                 Rides      = db.Rides.Include(r => r.Campus)
+                ,Campuses   = db.Campus.Select(c => new SelectListItem { Value = c.CampusId.ToString(), Text = c.Name })
+                //,DaysOfWeek = new SelectListItem { }.ToString
             };
           
             return View(model);
         }
 
         // // Ride/Search
-        // public ActionResult Search(Campus campus, string dayOfWeek)
+        // public ActionResult Search(RideIndexModel)
         // {
         //     var rides = db.Rides.
-        //                   .Include("Ride")
-        //                   .Where(r => r.Campus.Contains(campus) && r => r.DayOfWeek.Contains(dayOfWeek))
+        //                   .Include()
+        //                   .Where()
         //                 
         // }
 
@@ -43,7 +44,7 @@ namespace CIS229_Lab4_MMJ.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Ride ride = db.Rides.Find(id);
-            //Ride ride = db.Rides.Include(r => r.Campus).Where(r => r.RideId == id).FirstOrDefault();
+
             if (ride == null)
             {
                 return HttpNotFound();
