@@ -207,6 +207,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Ride.cs" />
+    <Compile Include="Models\RideIndexModel.cs" />
     <Compile Include="Models\RideShareDB.cs" />
     <Compile Include="Models\RideShareDbInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

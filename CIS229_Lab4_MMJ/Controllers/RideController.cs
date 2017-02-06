@@ -17,8 +17,13 @@ namespace CIS229_Lab4_MMJ.Controllers
         // GET: Ride
         public ActionResult Index()
         {
-            var rides = db.Rides.Include(r => r.Campus);
-            return View(rides.ToList());
+            var model = new RideIndexModel
+            {
+                 Rides    = db.Rides.Include(r => r.Campus)
+                ,Campuses = db.Campus.Select(c => new SelectListItem { Value = c.CampusId.ToString(), Text = c.Name })
+            };
+          
+            return View(model);
         }
 
         // // Ride/Search
