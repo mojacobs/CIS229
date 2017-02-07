@@ -77,8 +77,10 @@ namespace CIS229_Lab4_MMJ.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "RideId,CampusId,StudentEmail,StartingCrossroads,StartingTown,DayOfWeek,TimeStart,TimeEnd,Requirements")] Ride ride)
         {
+            ModelState.Remove("Campus");
             if (ModelState.IsValid)
             {
+                ride.Campus = db.Campus.First(c => c.CampusId == ride.CampusId);
                 db.Rides.Add(ride);
                 db.SaveChanges();
                 return RedirectToAction("Index");
