@@ -37,13 +37,17 @@ namespace CIS229_Lab4_MMJ.Controllers
         }
 
        
-        //// Ride/Search
-        //public ActionResult Search(RideIndexModel query)
-        //{
-        //    var rides = query.Rides
-        //                  //.Where();
-        //}
-        
+        // Ride/Search
+        public ActionResult Search(RideIndexModel query)
+        {
+            //    var rides = query.Rides
+            //                  //.Where();
+            if (query == null)
+            {
+                return HttpNotFound();
+            }
+            return RedirectToAction("Index");
+        }
         
         // GET: Ride/Details/5
         public ActionResult Details(int? id)
