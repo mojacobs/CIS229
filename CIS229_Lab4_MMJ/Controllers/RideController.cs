@@ -19,22 +19,33 @@ namespace CIS229_Lab4_MMJ.Controllers
         {
             var model = new RideIndexModel
             {
-                 Rides      = db.Rides.Include(r => r.Campus)
-                ,Campuses   = db.Campus.Select(c => new SelectListItem { Value = c.CampusId.ToString(), Text = c.Name })
-                //,DaysOfWeek = new SelectListItem { }
+                Rides = db.Rides.Include(r => r.Campus)
+               ,Campuses = db.Campus.Select(c => new SelectListItem { Value = c.CampusId.ToString(), Text = c.Name })
+               ,DaysOfWeek = new List<SelectListItem>
+               {
+                   new SelectListItem { Value = "Sunday",    Text = "Sunday"    }
+                  ,new SelectListItem { Value = "Monday",    Text = "Monday"    }
+                  ,new SelectListItem { Value = "Tuesday",   Text = "Tuesday"   }
+                  ,new SelectListItem { Value = "Wednesday", Text = "Wednesday" }
+                  ,new SelectListItem { Value = "Thursday",  Text = "Thursday"  }
+                  ,new SelectListItem { Value = "Friday",    Text = "Friday"    }
+                  ,new SelectListItem { Value = "Saturday",  Text = "Saturday"  }
+               }
             };
           
             return View(model);
         }
 
-        // // Ride/Search
-        // public ActionResult Search(RideIndexModel)
-        // {
-        //     var rides = db.Rides.
-        //                   .Include()
-        //                   .Where()
-        //                 
-        // }
+       
+        //// Ride/Search
+        //public ActionResult Search(RideIndexModel query)
+        //{
+        //    var rides = query.Rides
+        //                  //.Where();
+        //}
+        
+        
+         
 
         // GET: Ride/Details/5
         public ActionResult Details(int? id)
