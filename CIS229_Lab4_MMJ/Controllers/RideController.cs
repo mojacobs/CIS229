@@ -45,8 +45,6 @@ namespace CIS229_Lab4_MMJ.Controllers
         //}
         
         
-         
-
         // GET: Ride/Details/5
         public ActionResult Details(int? id)
         {
@@ -71,11 +69,9 @@ namespace CIS229_Lab4_MMJ.Controllers
         }
 
         // POST: Ride/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RideId,CampusId,StudentEmail,StartingCrossroads,StartingTown,DayOfWeek,TimeStart,TimeEnd")] Ride ride)
+        public ActionResult Create([Bind(Include = "RideId,CampusId,StudentEmail,StartingCrossroads,StartingTown,DayOfWeek,TimeStart,TimeEnd,Requirements")] Ride ride)
         {
             if (ModelState.IsValid)
             {
@@ -109,7 +105,7 @@ namespace CIS229_Lab4_MMJ.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RideId,CampusId,StudentEmail,StartingCrossroads,StartingTown,DayOfWeek,TimeStart,TimeEnd")] Ride ride)
+        public ActionResult Edit([Bind(Include = "RideId,CampusId,StudentEmail,StartingCrossroads,StartingTown,DayOfWeek,TimeStart,TimeEnd,Requirements")] Ride ride)
         {
             if (ModelState.IsValid)
             {
