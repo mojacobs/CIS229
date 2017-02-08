@@ -15,11 +15,23 @@ namespace CIS229_Lab4_MMJ.Controllers
         private RideShareDB db = new RideShareDB();
 
         // GET: Ride
-        public ActionResult Index()
+        public ActionResult Index(int? campusId, string dayOfWeek)
         {
+            IQueryable<Ride> ridesQuery = db.Rides.Include(r => r.Campus);
+
+            if (campusId.HasValue)
+            {
+                ridesQuery = ridesQuery.Where(r => r.CampusId == campusId);
+            }
+
+            if (dayOfWeek != null)
+            {
+                ridesQuery = ridesQuery.Where(r => r.DayOfWeek == dayOfWeek);
+            }
+
             var model = new RideIndexModel
             {
-                Rides = db.Rides.Include(r => r.Campus)
+                Rides = ridesQuery
                ,Campuses = db.Campus.Select(c => new SelectListItem { Value = c.CampusId.ToString(), Text = c.Name })
                ,DaysOfWeek = new List<SelectListItem>
                {
@@ -40,13 +52,7 @@ namespace CIS229_Lab4_MMJ.Controllers
         // Ride/Search
         public ActionResult Search(RideIndexModel query)
         {
-            //    var rides = query.Rides
-            //                  //.Where();
-            if (query == null)
-            {
-                return HttpNotFound();
-            }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { campusId = query?.SelectedCampusId, dayOfWeek = query?.SelectedDayOfWeek });
         }
         
         // GET: Ride/Details/5
