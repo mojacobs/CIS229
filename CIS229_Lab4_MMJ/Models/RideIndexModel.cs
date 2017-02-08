@@ -13,6 +13,6 @@ namespace CIS229_Lab4_MMJ.Models
 
         public IEnumerable<SelectListItem> DaysOfWeek { get; set; }
 
-        public int SelectedDayOfWeek { get; set; }
+        public string SelectedDayOfWeek { get; set; }
     }
 }
