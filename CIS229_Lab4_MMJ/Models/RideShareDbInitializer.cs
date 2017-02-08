@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.Migrations;
-using System.Linq;
-using System.Web;
-
-
-namespace CIS229_Lab4_MMJ.Models
+﻿namespace CIS229_Lab4_MMJ.Models
 {
     public class RideShareDbInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<RideShareDB>
     {
